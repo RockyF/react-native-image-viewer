@@ -191,8 +191,10 @@ export default class ImageViewer extends React.Component<Props, State> {
       return;
     }
 
-    Image.getSize(
+    const headers = image.props && image.props.headers ? image.props.headers : {};
+    Image.getSizeWithHeaders(
       image.url,
+      headers,
       (width: number, height: number) => {
         imageStatus.width = width;
         imageStatus.height = height;
